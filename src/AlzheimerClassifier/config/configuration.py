@@ -1,6 +1,7 @@
+import os
 from AlzheimerClassifier.constants import *
 from AlzheimerClassifier.utils.common import read_yaml, create_directories
-from AlzheimerClassifier.entity.config_entity import DataIngestionConfig
+from AlzheimerClassifier.entity.config_entity import DataIngestionConfig, TrainingConfig
 
 
 class ConfigurationManager:
@@ -22,3 +23,23 @@ class ConfigurationManager:
             unzip_dir=config.unzip_dir,
         )
         return data_ingestion_config
+
+    def get_training_config(self) -> TrainingConfig:
+        config = self.config.training
+        create_directories([config.root_dir])
+        params = self.params
+        dataset = os.path.join(
+            "artifacts", "data_ingestion", "dataset", "AugmentedAlzheimerDataset"
+        )
+        training_config = TrainingConfig(
+            root_dir=config.root_dir,
+            model_path=config.model_path,
+            dataset=Path(dataset),
+            img_size=params.IMG_SIZE,
+            epochs=params.EPOCHS,
+            lr=params.LEARNING_RATE,
+            weights=params.WEIGHTS,
+            channels=params.CHANNELS,
+            batch_size=params.BATCH_SIZE,
+        )
+        return training_config
