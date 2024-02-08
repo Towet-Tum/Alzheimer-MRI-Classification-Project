@@ -141,40 +141,31 @@ def load_data(data_dir):
 
     filepaths = []
     labels = []
-    # Get a list of subdirectories
-    folds = os.listdir(data_dir)
-    # Iterate over each fold in the dataset
-    for fold in folds:
-        foldpath = os.path.join(data_dir, fold)
-        flist = os.listdir(foldpath)
-        # Iterate over each file in the current fold
-        for f in flist:
-            f_path = os.path.join(foldpath, f)
-            filelist = os.listdir(f_path)
-            # Iterate over each file in the current fold
+
+    # Mapping dictionary for class names
+    class_mapping = {
+        "MildDemented": "Mild Demented",
+        "ModerateDemented": "Moderate Demented",
+        "NonDemented": "Non Demented",
+        "VeryMildDemented": "Very Mild Demented",
+    }
+
+    # Iterate over each class in the dataset
+    for class_name, mapped_name in class_mapping.items():
+        class_path = os.path.join(data_dir, class_name)
+
+        # Check if it's a directory
+        if os.path.isdir(class_path):
+            filelist = os.listdir(class_path)
+
+            # Iterate over each file in the current class
             for file in filelist:
-                fpath = os.path.join(f_path, file)
-                filepaths.append(fpath)
-                # Determine the label based on the subdirectory (f)
-                if f == "colon_aca":
-                    labels.append("Colon Adenocarcinoma")
+                file_path = os.path.join(class_path, file)
+                filepaths.append(file_path)
+                labels.append(mapped_name)
 
-                elif f == "colon_n":
-                    labels.append("Colon Benign Tissue")
-
-                elif f == "lung_aca":
-                    labels.append("Lung Adenocarcinoma")
-
-                elif f == "lung_n":
-                    labels.append("Lung Benign Tissue")
-
-                elif f == "lung_scc":
-                    labels.append("Lung Squamous Cell Carcinoma")
-
-    # Concatenate data paths with labels into one dataframe
-    Fseries = pd.Series(filepaths, name="filepaths")
-    Lseries = pd.Series(labels, name="labels")
-    df = pd.concat([Fseries, Lseries], axis=1)
+    # Create DataFrame
+    df = pd.DataFrame({"filepaths": filepaths, "labels": labels})
     return df
 
 
