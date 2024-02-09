@@ -1,7 +1,11 @@
 import os
 from AlzheimerClassifier.constants import *
 from AlzheimerClassifier.utils.common import read_yaml, create_directories
-from AlzheimerClassifier.entity.config_entity import DataIngestionConfig, TrainingConfig
+from AlzheimerClassifier.entity.config_entity import (
+    DataIngestionConfig,
+    TrainingConfig,
+    EvaluationConfig,
+)
 
 
 class ConfigurationManager:
@@ -43,3 +47,18 @@ class ConfigurationManager:
             batch_size=params.BATCH_SIZE,
         )
         return training_config
+
+    def get_evaluation_config(self) -> EvaluationConfig:
+
+        dataset = os.path.join(
+            "artifacts", "data_ingestion", "dataset", "AugmentedAlzheimerDataset"
+        )
+        eval_config = EvaluationConfig(
+            path_of_model="artifacts/training/model.Xception.keras",
+            mlflow_uri="https://dagshub.com/Towet-Tum/Alzheimer-MRI-Classification-Project.mlflow",
+            all_params=self.params,
+            params_image_size=self.params.IMG_SIZE,
+            params_batch_size=self.params.BATCH_SIZE,
+            dataset=Path(dataset),
+        )
+        return eval_config

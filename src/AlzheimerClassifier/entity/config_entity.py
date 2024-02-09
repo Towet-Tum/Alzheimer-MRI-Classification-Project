@@ -21,3 +21,13 @@ class TrainingConfig:
     weights: str
     lr: float
     channels: int
+
+
+@dataclass(frozen=True)
+class EvaluationConfig:
+    path_of_model: Path
+    dataset: Path
+    all_params: dict
+    mlflow_uri: str
+    params_image_size: list
+    params_batch_size: int
