@@ -132,7 +132,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
-CSRF_TRUSTED_ORIGINS = ["https://alzheimer.azurewebsites.net"]
+CSRF_TRUSTED_ORIGINS = ["alzheimer101.azurewebsites.net"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
