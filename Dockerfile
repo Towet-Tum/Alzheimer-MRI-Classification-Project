@@ -14,9 +14,9 @@ RUN pip install -r requirements.txt
 # Expose port 8000 for the Django app to run on
 EXPOSE 8000
 
-# Run Django migrations and collect static files
+# Run Django migrations 
 RUN python AlzheimerApp/manage.py migrate
-RUN python AlzheimerApp/manage.py collectstatic --noinput
+
 
 # Start the Django app
 CMD ["python", "AlzheimerApp/manage.py", "runserver", "0.0.0.0:8000"]
