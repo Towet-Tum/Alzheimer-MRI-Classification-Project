@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/AlzheimerClassifier/pipeline/stage_01_data_ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 951c4d7fc263961b67d74d7512e81ed4
+      size: 379
+    - path: src/AlzheimerClassifier/pipeline/stage_01_data_ingestion.py
+      hash: md5
+      md5: c856c592fdef501747088a5ed29fcc78
+      size: 896
+    outs:
+    - path: artifacts/data_ingestion/dataset/AugmentedAlzheimerDataset
+      hash: md5
+      md5: d49a3d812cc97e725d12ab789411d619.dir
+      size: 366157472
+      nfiles: 33984

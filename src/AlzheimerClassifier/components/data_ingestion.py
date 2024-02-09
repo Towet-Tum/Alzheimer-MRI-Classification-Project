@@ -2,6 +2,7 @@ import os
 import zipfile
 import gdown
 from AlzheimerClassifier import logger
+from AlzheimerClassifier.entity.config_entity import DataIngestionConfig
 
 
 class DataIngestion:

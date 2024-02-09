@@ -23,7 +23,7 @@ if __name__ == "__main__":
         obj = DataIngestionPipeline()
         obj.main()
         logger.info(
-            f">>>>>>>>>>> The {STAGE_NAME} has completed successfuly <<<<<<<<<< \n\n ==========="
+            f">>>>>>>>>>> The {STAGE_NAME} has completed successfully <<<<<<<<<< \n\n ==========="
         )
     except Exception as e:
         logger.exception(e)
