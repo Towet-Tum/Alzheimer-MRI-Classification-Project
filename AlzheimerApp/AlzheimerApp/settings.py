@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-7!6-3997r(cxs)tnu=e0gb)e@hup@2^0s0zmnu5p0ml%%$yqed
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["alzheimer101.azurewebsites.net"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "alzheimer101.azurewebsites.net"]
 
 
 # Application definition
