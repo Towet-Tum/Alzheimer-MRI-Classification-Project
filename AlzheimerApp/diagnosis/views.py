@@ -123,7 +123,7 @@ def train_model(request):
     print(f"Current Working Directory: {current_directory}")
 
     # Move to the next folder (replace 'next_folder' with the actual folder name)
-    next_folder = "AlzheimerClassification"
+    next_folder = "AlzheimerApp"
     next_folder_path = os.path.join(current_directory, next_folder)
 
     # Change the current working directory to the next folder
