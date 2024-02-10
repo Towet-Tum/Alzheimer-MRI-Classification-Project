@@ -16,7 +16,7 @@ EXPOSE 8000
 
 # Run Django migrations 
 RUN python AlzheimerApp/manage.py migrate
-RUN python AlzheimerApp/manage.py collectstatic --noinput
+#RUN python AlzheimerApp/manage.py collectstatic --noinput
 
 
 # Start the Django app
